@@ -1176,11 +1176,11 @@
     function sendWhatsApp() {
       const date = document.getElementById('date-input').value;
       const dateFormatted = date ? new Date(date + 'T12:00:00').toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' }) : '—';
-      const pickup = pickupChoice ? 'Sim, me busca e me leva! 🥺' : 'Vou por conta própria';
-      const choiceLabel = primaryCategory === 'activity' ? '🎭 Atividade' : '🍽️ Restaurante';
-      const companhia = answers.companhia === 'grupo' ? 'Com mais um casal 👫' : 'Só nós dois 💑';
+      const pickup = pickupChoice ? 'Sim, me busca e me leva!' : 'Vou por conta própria';
+      const choiceLabel = primaryCategory === 'activity' ? 'Atividade' : 'Restaurante';
+      const companhia = answers.companhia === 'grupo' ? 'Com mais um casal' : 'Só nós dois';
 
-      const msg = `Oi Guilherme! 💕\n\nEu aceito ir no encontro!\n\n${choiceLabel}: ${selectedItem.name}\n👥 Companhia: ${companhia}\n📅 Dia: ${dateFormatted}\n🚗 Me buscar: ${pickup}\n\nEu amo o Guilherme 🌹`;
+      const msg = `Oi Guilherme!\n\nEu aceito ir no encontro!\n\n${choiceLabel}: ${selectedItem.name}\nCompanhia: ${companhia}\nDia: ${dateFormatted}\nMe buscar: ${pickup}\n\nEu amo o Guilherme`;
       const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
     }
