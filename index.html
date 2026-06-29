@@ -1076,7 +1076,27 @@
       dropdown.value = '';
       dropWrap.style.display = 'block';
 
+      // Card fixo do Outback + Cinema, sempre aparece primeiro
+      const outback = RESTAURANTS.find(r => r.id === 'Outback');
+      if (outback) {
+        const pinnedCard = document.createElement('div');
+        pinnedCard.className = 'suggestion-card';
+        pinnedCard.innerHTML = `
+      <div class="card-top">
+        <span class="card-emoji">${outback.emoji}</span>
+        <span class="card-name">${outback.name}</span>
+        <span class="card-tag" style="background:#fde8d0;color:#c97b3f;">${outback.tag} ⭐</span>
+      </div>
+      <p class="card-desc">${outback.desc}</p>
+    `;
+        pinnedCard.onclick = () => selectItem(outback, pinnedCard);
+        wrap.appendChild(pinnedCard);
+        selectionCardEls.push(pinnedCard);
+      }
+
       suggestedItems.forEach(item => {
+        // Evita duplicar o Outback caso apareça nas sugestões normais
+        if (item.id === 'Outback') return;
         const card = document.createElement('div');
         card.className = 'suggestion-card';
         card.innerHTML = `
